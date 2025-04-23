@@ -53,6 +53,10 @@ module Ticktok
       result
     end
 
+    def total_time
+      @timers.values.sum(&:total_time)
+    end
+
     def reset
       @timers = {}
     end

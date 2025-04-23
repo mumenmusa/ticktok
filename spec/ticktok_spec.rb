@@ -70,4 +70,14 @@ RSpec.describe Ticktok do
       expect(Ticktok.timers).to be_empty
     end
   end
+
+  describe ".total_time" do
+    it "returns the sum of all timer totals" do
+      Ticktok.reset
+      Ticktok.track(:test1) { sleep(0.1) }
+      Ticktok.track(:test2) { sleep(0.2) }
+      
+      expect(Ticktok.total_time).to be_within(0.05).of(0.3)
+    end
+  end
 end
